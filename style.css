@@ -634,3 +634,348 @@ button:active {
     bottom: 20px !important;
     right: 20px !important;
 }
+
+/* Telegram账号问题解决区域样式 */
+.problem-solve-section {
+    margin-bottom: 40px;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.problem-solve-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.problem-card {
+    background: linear-gradient(145deg, #1a2a3a, #2a3a4a);
+    border-radius: 16px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
+}
+
+.problem-header {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 64, 175, 0.2));
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.problem-header h3 {
+    font-size: 20px;
+    color: #60a5fa;
+    margin: 0;
+}
+
+.price-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.problem-content {
+    padding: 25px;
+}
+
+.problem-description {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.problem-features {
+    list-style: none;
+    margin: 20px 0 25px 0;
+}
+
+.problem-features li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #e2e8f0;
+    font-size: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.problem-features li:last-child {
+    border-bottom: none;
+}
+
+.problem-features i {
+    color: #10b981;
+    font-size: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.problem-note {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 25px 0;
+}
+
+.problem-note p {
+    color: #fbbf24;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+}
+
+.problem-note i {
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .problem-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .problem-header h3 {
+        font-size: 18px;
+    }
+    
+    .price-badge {
+        align-self: flex-start;
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+    
+    .problem-content {
+        padding: 20px 15px;
+    }
+    
+    .problem-features li {
+        font-size: 14px;
+    }
+}
+
+/* 重点推荐群组样式 */
+.featured-group-container {
+    margin-bottom: 30px;
+    animation: slideIn 0.6s ease forwards;
+}
+
+.featured-group {
+    background: linear-gradient(145deg, #1a2a3a, #2a3a4a);
+    border-radius: 16px;
+    border: 2px solid rgba(245, 158, 11, 0.4);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+    transition: all 0.3s ease;
+}
+
+.featured-group:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(245, 158, 11, 0.25);
+    border-color: rgba(245, 158, 11, 0.6);
+}
+
+.featured-header {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.2));
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.featured-header h3 {
+    font-size: 18px;
+    color: #fbbf24;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.featured-badge {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.featured-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .featured-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.featured-group-info {
+    flex: 1;
+}
+
+.featured-group-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fbbf24;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.featured-category {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.featured-group-description {
+    color: #e2e8f0;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.featured-group-description p {
+    margin-bottom: 12px;
+}
+
+.featured-group-description ul {
+    list-style: none;
+    padding-left: 20px;
+    margin: 12px 0;
+}
+
+.featured-group-description li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 24px;
+}
+
+.featured-group-description li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+}
+
+.featured-note {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 20px;
+    color: #60a5fa;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.featured-note i {
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.featured-join-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 140px;
+    align-self: flex-start;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+.featured-join-btn:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+@media (min-width: 768px) {
+    .featured-join-btn {
+        align-self: center;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 767px) {
+    .featured-header {
+        padding: 15px 18px;
+    }
+    
+    .featured-header h3 {
+        font-size: 16px;
+    }
+    
+    .featured-badge {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+    
+    .featured-content {
+        padding: 18px;
+    }
+    
+    .featured-group-name {
+        font-size: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .featured-join-btn {
+        width: 100%;
+        padding: 12px;
+    }
+}
