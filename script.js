@@ -58,7 +58,6 @@ function updateContactButton(pageId) {
 const groupsData = [
     { id: 1, name: 'Telegram中文技术交流', category: 'tech', link: 'https://t.me/chinese_tech' },
     { id: 2, name: 'Telegram资源分享频道', category: 'resource', link: 'https://t.me/resources_channel' },
-    { id: 4, name: 'Telegram聊天交友', category: 'chat', link: 'https://t.me/chat_friends' },
     { id: 5, name: 'Telegram编程学习', category: 'tech', link: 'https://t.me/programming_learn' },
     { id: 6, name: 'Telegram软件工具', category: 'resource', link: 'https://t.me/software_tools' },
     { id: 7, name: 'Telegram影视资源', category: 'resource', link: 'https://t.me/movies_tv' },
@@ -68,6 +67,7 @@ const groupsData = [
     { id: 304, name: '快搜', category: 'news', link: 'https://t.me/super' },
     { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
     { id: 306, name: 'TG鉴黄师', category: 'news', link: 'https://t.me/TGJHS_BOT' },
+    { id: 401, name: '第一客服', category: 'chat', link: 'https://t.me/bnbkuan' },
     { id: 8, name: 'Telegram游戏交流', category: 'chat', link: 'https://t.me/game_chat' }
 ];
 
@@ -313,4 +313,5 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
+
 
