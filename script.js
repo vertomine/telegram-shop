@@ -58,7 +58,6 @@ function updateContactButton(pageId) {
 const groupsData = [
     { id: 1, name: 'Telegram中文技术交流', category: 'tech', link: 'https://t.me/chinese_tech' },
     { id: 2, name: 'Telegram资源分享频道', category: 'resource', link: 'https://t.me/resources_channel' },
-    { id: 3, name: 'Telegram新闻资讯', category: 'news', link: 'https://t.me/news_updates' },
     { id: 4, name: 'Telegram聊天交友', category: 'chat', link: 'https://t.me/chat_friends' },
     { id: 5, name: 'Telegram编程学习', category: 'tech', link: 'https://t.me/programming_learn' },
     { id: 6, name: 'Telegram软件工具', category: 'resource', link: 'https://t.me/software_tools' },
@@ -314,3 +313,4 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
+
