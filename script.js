@@ -63,6 +63,12 @@ const groupsData = [
     { id: 5, name: 'Telegram编程学习', category: 'tech', link: 'https://t.me/programming_learn' },
     { id: 6, name: 'Telegram软件工具', category: 'resource', link: 'https://t.me/software_tools' },
     { id: 7, name: 'Telegram影视资源', category: 'resource', link: 'https://t.me/movies_tv' },
+    { id: 301, name: '极搜机器人', category: 'newse', link: 'https://t.me/jisou' },
+    { id: 302, name: '极搜', category: 'news', link: 'https://t.me/jiso' },
+    { id: 303, name: 'SOSO机器人', category: 'news', link: 'https://t.me/sosoo' },
+    { id: 304, name: '快搜', category: 'news', link: 'https://t.me/super' },
+    { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
+    { id: 306, name: 'TG鉴黄师', category: 'news', link: 'https://t.me/TGJHS_BOT' },
     { id: 8, name: 'Telegram游戏交流', category: 'chat', link: 'https://t.me/game_chat' }
 ];
 
@@ -116,10 +122,10 @@ function initGroups() {
 // 获取分类中文名
 function getCategoryName(category) {
     const categoryMap = {
-        'tech': '技术交流',
-        'resource': '资源分享',
-        'news': '新闻资讯',
-        'chat': '聊天交友'
+        'tech': '福利',
+        'resource': '资源',
+        'news': '资讯',
+        'chat': '售后'
     };
     return categoryMap[category] || category;
 }
