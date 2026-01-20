@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram账号商店 - 专业账号服务</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 在线客服工具 -->
+    <div id="chat-widget">
+        <!-- Tawk.to Script -->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/696e8cbdb0ecea197acdb1ea/1jfbvb9i5';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+        
+        <button class="chat-toggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <div class="nav-container">
+            <nav class="nav-buttons">
+                <button class="nav-btn active" data-page="account">
+                    <i class="fas fa-user"></i>
+                    <span>账号出售</span>
+                </button>
+                <button class="nav-btn" data-page="payment">
+                    <i class="fas fa-credit-card"></i>
+                    <span>代付</span>
+                </button>
+                <button class="nav-btn" data-page="bot">
+                    <i class="fas fa-robot"></i>
+                    <span>群组Bot</span>
+                </button>
+                <button class="nav-btn" data-page="help">
+                    <i class="fas fa-question-circle"></i>
+                    <span>帮助</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 账号出售页面 -->
+        <section id="account-page" class="page active">
+            <div class="container">
+                <h1><i class="fas fa-shopping-cart"></i> Telegram账号出售</h1>
+                <div class="plans-grid">
+                    <!-- 套餐A -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h2>A套餐</h2>
+                            <span class="plan-badge">热卖</span>
+                        </div>
+                        <div class="plan-content">
+                            <p class="plan-description">Telegram稳定账号</p>
+                            <div class="plan-price">￥29</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> 热销成品账号</li>
+                                <li><i class="fas fa-check"></i> 默认 +1美国账号 多国可选</li>
+                                <li><i class="fas fa-check"></i> 支持人工售后</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 套餐B -->
+                    <div class="plan-card featured">
+                        <div class="plan-header">
+                            <h2>B套餐</h2>
+                            <span class="plan-badge">推荐</span>
+                        </div>
+                        <div class="plan-content">
+                            <p class="plan-description">Telegram老账号 + 赠送美国静态住宅IP</p>
+                            <div class="plan-price">￥39</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> 满1年老账号</li>
+                                <li><i class="fas fa-check"></i> 专用美国静态住宅IP</li>
+                                <li><i class="fas fa-check"></i> 防封更高安全性</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 套餐C -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h2>C套餐</h2>
+                            <span class="plan-badge">高端</span>
+                        </div>
+                        <div class="plan-content">
+                            <p class="plan-description">Telegram美国实体卡注册账号 + 赠送美国静态住宅IP</p>
+                            <div class="plan-price">￥59</div>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> 实体卡注册成品号</li>
+                                <li><i class="fas fa-check"></i> 专用美国静态住宅IP</li>
+                                <li><i class="fas fa-check"></i> 最稳定可靠</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <p><i class="fas fa-info-circle"></i> <strong>注意：</strong>以上价格是账号价格，从零基础开始安卓苹果包上号登录需加收服务费￥10</p>
+                </div>
+
+                <button class="contact-btn" onclick="openChat()">
+                    <i class="fas fa-headset"></i> 立即咨询购买
+                </button>
+            </div>
+        </section>
+
+        <!-- 代付页面 -->
+        <section id="payment-page" class="page">
+            <div class="container">
+                <h1><i class="fas fa-gem"></i> Telegram Premium 代付</h1>
+                <div class="payment-plans">
+                    <!-- 3个月 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <h2>3个月</h2>
+                        </div>
+                        <div class="payment-content">
+                            <p class="payment-description">Telegram Premium会员</p>
+                            <div class="payment-price">￥120</div>
+                            <div class="payment-per-month">￥40/月</div>
+                        </div>
+                    </div>
+
+                    <!-- 6个月 -->
+                    <div class="payment-card featured">
+                        <div class="payment-header">
+                            <h2>6个月</h2>
+                            <span class="recommended">最划算</span>
+                        </div>
+                        <div class="payment-content">
+                            <p class="payment-description">Telegram Premium会员</p>
+                            <div class="payment-price">￥160</div>
+                            <div class="payment-per-month">￥26.7/月</div>
+                        </div>
+                    </div>
+
+                    <!-- 12个月 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <h2>12个月</h2>
+                        </div>
+                        <div class="payment-content">
+                            <p class="payment-description">Telegram Premium会员</p>
+                            <div class="payment-price">￥200</div>
+                            <div class="payment-per-month">￥16.7/月</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <p><i class="fas fa-info-circle"></i> <strong>注意：</strong>联系客服开通，支持多种支付方式。</p>
+                </div>
+
+                <button class="contact-btn" onclick="openChat()">
+                    <i class="fas fa-wallet"></i> 联系客服开通
+                </button>
+            </div>
+        </section>
+
+        <!-- 群组Bot页面 -->
+        <section id="bot-page" class="page">
+            <div class="container">
+                <h1><i class="fas fa-users"></i> Telegram群组与频道</h1>
+                
+                <!-- 分类筛选 -->
+                <div class="category-filter">
+                    <button class="filter-btn active" data-category="all">全部</button>
+                    <button class="filter-btn" data-category="tech">福利</button>
+                    <button class="filter-btn" data-category="resource">资源</button>
+                    <button class="filter-btn" data-category="news">资讯</button>
+                    <button class="filter-btn" data-category="chat">售后</button>
+                </div>
+
+                <!-- 群组列表 -->
+                <div class="groups-list" id="groups-container">
+                    <!-- 群组将通过JavaScript动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 帮助页面 -->
+        <section id="help-page" class="page">
+            <div class="container">
+                <h1><i class="fas fa-question-circle"></i> 帮助中心</h1>
+                
+                <div class="faq-container">
+                    <!-- FAQ 1 -->
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>如何购买账号？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 选择您需要的价格套餐<br>
+                            2. 点击"立即咨询购买"按钮<br>
+                            3. 联系在线客服确认需求<br>
+                            4. 客服会指导您完成支付<br>
+                            5. 客服提供账号和登录指导</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>首次登录注意事项</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 登录账号后48小时后务必立即完成以下操作：修改密码，路径：设置 → 隐私 → 两步验证， 初始密码为登录账号时使用的密码。请设置安全邮箱用于找回。<br>
+                            2. 修改邮箱：在手机客户端“设置”中查看绑定邮箱，如显示非本人邮箱，请第一时间更换为自己的邮箱（推荐使用 Gmail）<br>
+                            3. 管理设备：注销无关设备，设置  隐私→ 设备管理，注销其他活跃设备。如遇无法踢出，请等待 48 小时。<br>
+                            4. 设置用户名：实测表明，设置用户名的账号风控更低，更安全。
+<br>
+                            5. 登录后不要马上加群或者私信陌生人，修改资料和密码也最好正常登录3天再进行操作，
+</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>必看使用建议</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 登录后账号必需保留一个设备在线，不能全部退出登录，全部退出登录就无法再次登录此账号。
+<br>
+                            2. 登录后不要马上加群或者私信陌生人，修改资料和密码也最好正常登录3天再进行操作<br>
+                            3. 刚登录建议一周内不可私信任何陌生人，可以添加几个公共群组和频道<br>
+                            4. 冷养号一周后每日私信陌生人不超过2个，群组不超过5个<br>
+                            5. 开通会员极大程度放宽这些限制，如果您用电报进行外贸，我们强烈建议您开通一个会员</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>售后说明</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 我们在售账号均人工测试过都是未封禁状态，所以仅质保首登，首登没问题即可证明账号没问题<br>
+                            2. 首登保证这也是行业内的通用规则，如果账号登录出现秒封和秒冻结，可以免费更换账号<br>
+                            3. 其他情况均不在售后范围。请在购买完成后立即检查账号是否可正常使用，我们的号码在出售后即会删档，不提供二次登录服务<br>
+                            4. 赠送的静态住宅IP不保证使用满一个月时长，而且仅可用来养号防封，请忽用来播放视频，当月流量耗尽即服务中止<br>
+                            5. 赠送的静态住宅IP到期后可以联系客服续费，不续费需要自行解决网络问题</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>两步验证（Two-Step Verification）密码忘记怎么办？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 出于安全性的考虑，建议大家设置两步验证密码，在设置的最后一步是添加安全邮箱，作用是在忘记两步验证的情况下，可以通过安全邮箱进行重置密码。建议您使用安全性高的个人邮箱，如个人私用的Gmail或Outlook<br>
+                            2. 若您已经登录了账户想修改两步验证密码，可以通过已设置的安全邮箱重置密码<br>
+                            3. 若未设置安全邮箱或无法访问安全邮箱，那可以点击 Reset 按钮，等待7天重置两部验证密码。<br>
+                            4. 若您在尝试登录过程中，忘记了已设置的两步验证密码，可以通过已设置的安全邮箱重置密码；<br>
+                            5. 若未设置安全邮箱或无法访问安全邮箱，那只能重置账户（其效果相当于注销帐号）</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Telegram解除成人敏感限制</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. 打开浏览器，复制下面链接：Web.telegram.org<br>
+                            2. 填手机号登录飞机网页版，进入首页点击左上角三条杠<br>
+                            3. 点击 Settings，选择 Privacy and Security<br>
+                            4. 在 Sensitive content，Show 18+ Content 选项打钩<br>
+                            5. 退出网页版，手机APP 重启即可观看</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>支付方式有哪些？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>我们支持以下支付方式：<br>
+                            • 支付宝支付<br>
+                            • 微信支付<br>
+                            • USDT (TRC20/ERC20)<br>
+                            • 银行卡转账</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>账号安全有保障吗？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>我们提供以下保障：<br>
+                            • 所有账号售出后即删档<br>
+                            • 永久提供账号问题支持<br>
+                            • 专业的技术指导服务<br>
+                            • 长期稳定的售后服务</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>如何联系客服？</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>您可以通过以下方式联系我们：<br>
+                            • 页面右下角在线聊天<br>
+                            • Telegram: @bnbkuan<br>
+                            • 工作时间: 13:00-23:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部信息 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 无极流Telegram账号商店 版权所有</p>
+            <p class="footer-note">本网站仅为信息展示平台，实际交易请通过客服完成</p>
+        </div>
+    </footer>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
