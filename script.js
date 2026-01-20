@@ -67,8 +67,8 @@ const groupsData = [
     { id: 304, name: '快搜', category: 'news', link: 'https://t.me/super' },
     { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
     { id: 306, name: 'TG鉴黄师', category: 'news', link: 'https://t.me/TGJHS_BOT' },
-    { id: 401, name: '第一客服', category: 'chat', link: 'https://t.me/bnbkuan' },
-    { id: 8, name: '售后群', category: 'chat', link: 'https://t.me/wujiflow_a' }
+    { id: 401, name: '电报客服', category: 'chat', link: 'https://t.me/bnbkuan' },
+    { id: 8, name: '售后交流群-资源共享', category: 'chat', link: 'https://t.me/wujiflow_a' }
 ];
 
 // 初始化群组功能
@@ -313,6 +313,7 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
+
 
 
 
