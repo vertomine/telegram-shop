@@ -68,7 +68,7 @@ const groupsData = [
     { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
     { id: 306, name: 'TG鉴黄师', category: 'news', link: 'https://t.me/TGJHS_BOT' },
     { id: 401, name: '第一客服', category: 'chat', link: 'https://t.me/bnbkuan' },
-    { id: 8, name: 'Telegram游戏交流', category: 'chat', link: 'https://t.me/game_chat' }
+    { id: 8, name: '售后群', category: 'chat', link: 'https://t.me/wujiflow_a' }
 ];
 
 // 初始化群组功能
@@ -313,5 +313,6 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
+
 
 
