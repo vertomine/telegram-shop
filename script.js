@@ -73,7 +73,8 @@ const groupsData = [
     { id: 319, name: '媒体下载机器人', category: 'resource', link: 'https://t.me/download_it_bot' },
     { id: 320, name: '推特视频下载', category: 'resource', link: 'https://t.me/xx_video_download_bot' },
     { id: 301, name: '极搜机器人', category: 'newse', link: 'https://t.me/jisou' },
-    { id: 302, name: '极搜', category: 'news', link: 'https://t.me/jiso' },
+    { id: 302, name: '极搜1', category: 'news', link: 'https://t.me/jiso' },
+    { id: 302, name: '极搜2', category: 'news', link: 'https://t.me/jisou' },
     { id: 303, name: 'SOSO机器人', category: 'news', link: 'https://t.me/sosoo' },
     { id: 304, name: '快搜', category: 'news', link: 'https://t.me/super' },
     { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
@@ -327,6 +328,7 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
+
 
 
 
