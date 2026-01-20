@@ -56,11 +56,22 @@ function updateContactButton(pageId) {
 
 // 群组数据
 const groupsData = [
-    { id: 1, name: 'Telegram中文技术交流', category: 'tech', link: 'https://t.me/chinese_tech' },
-    { id: 2, name: 'Telegram资源分享频道', category: 'resource', link: 'https://t.me/resources_channel' },
-    { id: 5, name: 'Telegram编程学习', category: 'tech', link: 'https://t.me/programming_learn' },
-    { id: 6, name: 'Telegram软件工具', category: 'resource', link: 'https://t.me/software_tools' },
-    { id: 7, name: 'Telegram影视资源', category: 'resource', link: 'https://t.me/movies_tv' },
+    { id: 311, name: '搞笑视频 吃瓜群众', category: 'resource', link: 'https://t.me/lsd62' },
+    { id: 312, name: '少女实在是太美好了', category: 'resource', link: 'https://t.me/tastegirl' },
+    { id: 313, name: '查询telegram的注册时间', category: 'resource', link: 'https://t.me/joined_date_bot' },
+    { id: 314, name: '每天60秒早间阅读－早报', category: 'resource', link: 'https://t.me/NEWSPJAPK' },
+    { id: 315, name: '7×24即时新闻报道', category: 'resource', link: 'https://t.me/tnews365' },
+    { id: 316, name: ' 今天你想跑路了吗？', category: 'resource', link: 'https://t.me/getoutforchina' },
+    { id: 411, name: '搜书神器：搜书 | 推书| 求书', category: 'resource', link: 'https://t.me/voyla' },
+    { id: 412, name: '搜书神器：深夜书架', category: 'resource', link: 'https://t.me/BookLogChannel' },
+    { id: 413, name: '一起搜电影', category: 'resource', link: 'https://t.me/Cctv365bot' },
+    { id: 314, name: '人人影视资源搜索', category: 'resource', link: 'https://t.me/yyets_bot' },
+    { id: 415, name: '下载网易云歌曲', category: 'resource', link: 'https://t.me/Music163bot' },
+    { id: 316, name: '抖音Tiktok去水印', category: 'resource', link: 'https://t.me/DouYintg_bot' },
+    { id: 317, name: 'AI在线解析总结视频', category: 'resource', link: 'https://t.me/bilibiliparse_bot' },
+    { id: 318, name: '妙妙小工具Beta', category: 'resource', link: 'https://t.me/GLBetabot' },
+    { id: 319, name: '媒体下载机器人', category: 'resource', link: 'https://t.me/download_it_bot' },
+    { id: 320, name: '推特视频下载', category: 'resource', link: 'https://t.me/xx_video_download_bot' },
     { id: 301, name: '极搜机器人', category: 'newse', link: 'https://t.me/jisou' },
     { id: 302, name: '极搜', category: 'news', link: 'https://t.me/jiso' },
     { id: 303, name: 'SOSO机器人', category: 'news', link: 'https://t.me/sosoo' },
@@ -68,7 +79,7 @@ const groupsData = [
     { id: 305, name: 'Super搜索', category: 'news', link: 'https://t.me/super' },
     { id: 306, name: 'TG鉴黄师', category: 'news', link: 'https://t.me/TGJHS_BOT' },
     { id: 401, name: '电报客服', category: 'chat', link: 'https://t.me/bnbkuan' },
-    { id: 8, name: '售后交流群-资源共享', category: 'chat', link: 'https://t.me/wujiflow_a' }
+    { id: 402, name: '无极互助交流群-资源共享', category: 'chat', link: 'https://t.me/wujiflow_a' }
 ];
 
 // 初始化群组功能
@@ -238,6 +249,9 @@ function openChatWithMessage(page) {
         case 'bot':
             message = '你好，我想了解更多Telegram群组信息';
             break;
+        case 'help':
+            message = '你好，我需要Telegram账号问题解决服务';
+            break;
         default:
             message = '你好，我有问题需要咨询';
     }
@@ -313,7 +327,6 @@ window.addEventListener('online', function() {
 window.addEventListener('load', function() {
     checkChatStatus();
 });
-
 
 
 
