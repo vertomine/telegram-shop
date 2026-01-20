@@ -81,7 +81,7 @@
                     <!-- 套餐B -->
                     <div class="plan-card featured">
                         <div class="plan-header">
-                            <h2>B套餐</h2>
+                            <h2>B套餐  已售完待补货</h2>
                             <span class="plan-badge">推荐</span>
                         </div>
                         <div class="plan-content">
@@ -98,7 +98,7 @@
                     <!-- 套餐C -->
                     <div class="plan-card">
                         <div class="plan-header">
-                            <h2>C套餐</h2>
+                            <h2>C套餐  已售完待补货</h2>
                             <span class="plan-badge">高端</span>
                         </div>
                         <div class="plan-content">
@@ -191,6 +191,42 @@
                 </div>
 
                 <!-- 群组列表 -->
+                <!-- 重点推荐群组 -->
+                <div class="featured-group-container">
+                    <div class="featured-group">
+                        <div class="featured-header">
+                            <h3><i class="fas fa-star"></i> 推荐群组</h3>
+                            <span class="featured-badge">专属社区</span>
+                        </div>
+                        <div class="featured-content">
+                            <div class="featured-group-info">
+                                <div class="featured-group-name">
+                                    2026无极互助交流群
+                                    <span class="featured-category">本站所售账号均可被邀请</span>
+                                </div>
+                                <div class="featured-group-description">
+                                    <p>欢迎加入「2026无极互助交流群」！</p>
+                                    <p>这里是无极流的专属闭环社区，仅限被邀请的伙伴入群。目前群组处于静默养成期，暂不开放自由聊天。</p>
+                                    <p>2026年起正式开启交流模式，一起：</p>
+                                    <ul>
+                                        <li>分享项目合作机会</li>
+                                        <li>发布最新合作/优质信息</li>
+                                        <li>互相帮助、资源互通、共同成长</li>
+                                    </ul>
+                                    <p>保持高质量、低噪音，我们2026年见，一起无极！</p>
+                                    <div class="featured-note">
+                                        <i class="fas fa-info-circle"></i> <strong>入群方式：</strong>邀请入群，管理员同意可入群
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="featured-join-btn" onclick="openTelegram('https://t.me/+cKlsimY2gxNiMjc1')">
+                                <i class="fas fa-users"></i> 加入群组
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 群组列表 -->
                 <div class="groups-list" id="groups-container">
                     <!-- 群组将通过JavaScript动态生成 -->
                 </div>
@@ -201,6 +237,33 @@
         <section id="help-page" class="page">
             <div class="container">
                 <h1><i class="fas fa-question-circle"></i> 帮助中心</h1>
+                
+                <!-- Telegram账号问题解决区域 -->
+                <div class="problem-solve-section">
+                    <h2><i class="fas fa-tools"></i> Telegram账号问题解决服务</h2>
+                    <div class="problem-card">
+                        <div class="problem-header">
+                            <h3>Telegram账号问题解决</h3>
+                            <span class="price-badge">单次解决价格￥40</span>
+                        </div>
+                        <div class="problem-content">
+                            <p class="problem-description">
+                                如果您的账号(包括+86)登录时出现了以下问题请联系客服解决：
+                            </p>
+                            <ul class="problem-features">
+                                <li><i class="fas fa-check-circle"></i> 卡SMS Fee界面</li>
+                                <li><i class="fas fa-check-circle"></i> 无法接收验证码</li>
+                                <li><i class="fas fa-check-circle"></i> APP下载和VPN使用指导</li>
+                            </ul>
+                            <div class="problem-note">
+                                <p><i class="fas fa-info-circle"></i> <strong>服务说明：</strong>单次付费解决一个问题，如需多项服务可联系客服咨询套餐价格。</p>
+                            </div>
+                            <button class="contact-btn" onclick="openChat()">
+                                <i class="fas fa-headset"></i> 立即联系客服解决
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="faq-container">
                     <!-- FAQ 1 -->
@@ -353,5 +416,4 @@
 </body>
 
 </html>
-
 
