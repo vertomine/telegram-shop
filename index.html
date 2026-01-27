@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- 优化的Tawk.to脚本 -->
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/696e8cbdb0ecea197acdb1ea/1jfbvb9i5';
-        s1.charset='UTF-8';
-        // 关键：不要给官方脚本手动加奇怪的 crossorigin 限制，除非后台有要求
-        s0.parentNode.insertBefore(s1,s0);
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/696e8cbdb0ecea197acdb1ea/1jfbvb9i5';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
+    <!--End of Tawk.to Script-->
 </head>
 <body>
     <!-- 聊天小部件容器 -->
@@ -487,4 +489,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
