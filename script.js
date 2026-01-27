@@ -461,104 +461,76 @@ function showLiveCodeUI(container, data) {
 // 红包购卡提交函数
 function submitPacket() {
     const qq = document.getElementById('packetQQ').value;
-    const type = document.getElementById('packetType').value;
-    const code = document.getElementById('packetCode').value;
+    const amount = document.getElementById('packetAmount').value;
+    const statusDiv = document.getElementById('packetStatus');
 
-    if (!qq || !code) { 
-        alert('请完整填写QQ号和红包口令！'); 
-        return; 
+    if (!qq || !amount) {
+        statusDiv.innerText = "❌ 请输入完整信息";
+        return;
     }
 
-    const statusDiv = document.getElementById('packetStatus');
-    statusDiv.style.color = "#3b82f6";
-    statusDiv.innerText = "正在提交订单...";
+    statusDiv.innerText = "⏳ 正在提交...";
 
-    fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/submit_packet', { 
+    fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/submit_packet', {
         method: 'POST',
-        mode: 'cors',
-        headers: { 
-            'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json',
+            // --- 加入这一行代码，解决 ngrok 报错问题 ---
+            'ngrok-skip-browser-warning': '69420' 
         },
-        body: JSON.stringify({ qq: qq, amount: type, code: code })
+        body: JSON.stringify({ qq: qq, amount: amount })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('网络请求失败');
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         if (data.status === 'ok') {
             statusDiv.style.color = "#10b981";
-            statusDiv.innerText = "✅ 提交成功！管理员将在30分钟内审核，请稍后查询卡密。";
-            // 清空输入框
-            document.getElementById('packetQQ').value = '';
-            document.getElementById('packetCode').value = '';
+            statusDiv.innerText = "✅ 提交成功！请耐心等待卡密发放。";
         } else {
-            statusDiv.style.color = "#ef4444";
-            statusDiv.innerText = "❌ " + (data.msg || '提交失败');
+            statusDiv.innerText = "❌ 提交失败：" + (data.msg || "未知原因");
         }
     })
-    .catch(err => {
-        console.error('提交错误:', err);
-        statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 连接服务器失败，请检查网络或联系管理员";
+    .catch(error => {
+        console.error('提交错误:', error);
+        statusDiv.innerText = "❌ 网络错误，请检查后端是否运行";
     });
 }
 
-// 查询红包卡密函数
+// 2. 替换查询订单的函数
 function queryByQQ() {
-    const qq = document.getElementById('packetQQ').value;
-    if (!qq) { 
-        alert('请输入QQ号'); 
-        return; 
+    const qq = document.getElementById('queryQQ').value;
+    const resultDiv = document.getElementById('queryResult');
+
+    if (!qq) {
+        alert("请输入QQ号");
+        return;
     }
 
-    const statusDiv = document.getElementById('packetStatus');
-    statusDiv.style.color = "#3b82f6";
-    statusDiv.innerText = "正在查询...";
+    resultDiv.innerHTML = "⏳ 查询中...";
 
-    // 修改点：在 fetch 中加入了 headers 参数
     fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${qq}`, {
         headers: {
-            "ngrok-skip-browser-warning": "69420" // 核心：告诉 ngrok 跳过预览页，直接返回数据
+            // --- 同样加入这一行 ---
+            'ngrok-skip-browser-warning': '69420'
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('网络响应错误');
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        if (data.status === 'empty') {
-            statusDiv.style.color = "#f59e0b";
-            statusDiv.innerText = "⚠️ 未找到该QQ号的订单记录";
+        if (!data || data.length === 0 || data.status === 'empty') {
+            resultDiv.innerHTML = "❌ 未找到相关订单记录";
         } else {
-            let resultHTML = "<h4 style='color:#60a5fa; margin-bottom:10px;'>查询结果：</h4>";
-            
-            // 确保 data 是数组再进行遍历
-            const orders = Array.isArray(data) ? data : (data.orders || []);
-            
-            orders.forEach((order, index) => {
-                resultHTML += `
-                    <div style="background:#1e293b; padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid #334155;">
-                        <div style="color:#cbd5e1; font-size:12px;">提交时间: ${order.time || '未知'}</div>
-                        <div style="color:#${order.status === 1 ? '10b981' : 'f59e0b'}; margin:5px 0;">
-                            状态: ${order.status === 1 ? '✅ 已发放' : '⏳ 处理中'}
-                        </div>
-                        ${order.card ? `<div style="color:#60a5fa; font-weight:bold; margin-top:5px;">卡密: ${order.card}</div>` : ''}
-                    </div>
-                `;
+            // 这里保持你原来的显示逻辑即可
+            let html = '<div style="margin-top:10px; border-top:1px solid #334155; padding-top:10px;">';
+            data.forEach(item => {
+                const statusStr = item.status === 1 ? '<span style="color:#10b981">已发放</span>' : '<span style="color:#f59e0b">处理中</span>';
+                const cardStr = item.card ? `卡密: <b style="color:#60a5fa">${item.card}</b>` : '卡密: 待发放';
+                html += `<p style="font-size:14px; margin:5px 0;">[${item.time}] ${statusStr}<br>${cardStr}</p>`;
             });
-            
-            statusDiv.innerHTML = resultHTML;
+            html += '</div>';
+            resultDiv.innerHTML = html;
         }
     })
-    .catch(err => {
-        console.error('查询错误:', err);
-        statusDiv.style.color = "#ef4444";
-        // 这里会打印具体的错误信息，方便你调试
-        statusDiv.innerText = "❌ 查询失败: " + err.message;
+    .catch(error => {
+        console.error('查询错误:', error);
+        resultDiv.innerHTML = "❌ 查询失败，后端连接异常";
     });
 }
