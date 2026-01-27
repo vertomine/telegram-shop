@@ -1,5 +1,4 @@
-[file name]: script.js
-[file content begin]
+
 // 等待页面加载完成
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化页面
@@ -595,4 +594,3 @@ function queryByQQ() {
         statusDiv.innerText = "❌ 查询失败，请检查网络连接或联系客服";
     });
 }
-[file content end]
