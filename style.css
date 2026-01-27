@@ -36,11 +36,19 @@ body {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     z-index: 1000;
     transition: all 0.3s ease;
+    display: block !important;
 }
 
 .chat-toggle:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* 确保Tawk.to按钮显示 */
+#tawkchat-minified-box {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 1000 !important;
 }
 
 /* 顶部导航栏 */
@@ -447,17 +455,6 @@ h1 {
     color: #64748b !important;
 }
 
-/* 聊天窗口适配 */
-#tawkchat-minified-box {
-    bottom: 80px !important;
-}
-
-@media (max-width: 767px) {
-    #tawkchat-minified-box {
-        bottom: 70px !important;
-    }
-}
-
 /* 复制成功提示 */
 .copy-success::after {
     content: '✓ 已复制';
@@ -622,17 +619,6 @@ button:active {
     15% { opacity: 1; transform: translateX(-50%) translateY(0); }
     85% { opacity: 1; transform: translateX(-50%) translateY(0); }
     100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-}
-
-/* 隐藏我们自己的聊天按钮 */
-.chat-toggle {
-    display: none !important;
-}
-
-/* 确保Tawk.to按钮显示在正确位置 */
-#tawkchat-minified-box {
-    bottom: 20px !important;
-    right: 20px !important;
 }
 
 /* Telegram账号问题解决区域样式 */
