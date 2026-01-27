@@ -1,3 +1,4 @@
+const API_BASE = 'https://sapremic-unnumerously-joaquin.ngrok-free.dev';
 
 // 等待页面加载完成
 document.addEventListener('DOMContentLoaded', function() {
@@ -481,8 +482,8 @@ function submitPacket() {
     statusDiv.style.color = "#3b82f6";
     statusDiv.innerText = "⏳ 正在提交订单...";
 
-    // 更简单的请求格式
-    fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/submit_packet', {
+    // 使用简单的 POST 请求
+    fetch(`${API_BASE}/api/submit_packet`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -493,18 +494,12 @@ function submitPacket() {
             code: packetCode
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP错误: ${response.status}`);
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         console.log('提交响应:', data);
         if (data.status === 'ok') {
             statusDiv.style.color = "#10b981";
             statusDiv.innerText = "✅ 提交成功！订单已提交，请稍后查询卡密。";
-            // 清空红包口令
             document.getElementById('packetCode').value = "";
         } else {
             statusDiv.style.color = "#ef4444";
@@ -518,7 +513,7 @@ function submitPacket() {
     });
 }
 
-// 查询红包订单函数 - 已修复
+// 修改 queryByQQ 函数
 function queryByQQ() {
     const qq = document.getElementById('packetQQ').value.trim();
     const statusDiv = document.getElementById('packetStatus');
@@ -538,14 +533,9 @@ function queryByQQ() {
     statusDiv.style.color = "#3b82f6";
     statusDiv.innerText = "⏳ 正在查询订单...";
 
-    // 更简单的请求格式
-    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${encodeURIComponent(qq)}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP错误: ${response.status}`);
-        }
-        return response.json();
-    })
+    // 使用简单的 GET 请求
+    fetch(`${API_BASE}/api/query_packet?qq=${encodeURIComponent(qq)}`)
+    .then(response => response.json())
     .then(data => {
         console.log('查询结果:', data);
         
