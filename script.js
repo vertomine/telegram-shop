@@ -481,10 +481,10 @@ function submitPacket() {
     statusDiv.style.color = "#3b82f6";
     statusDiv.innerText = "⏳ 正在提交订单...";
 
+    // 更简单的请求格式
     fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/submit_packet', {
         method: 'POST',
-        mode: 'cors',
-        headers: { 
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
@@ -538,9 +538,8 @@ function queryByQQ() {
     statusDiv.style.color = "#3b82f6";
     statusDiv.innerText = "⏳ 正在查询订单...";
 
-    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${encodeURIComponent(qq)}`, {
-        mode: 'cors'
-    })
+    // 更简单的请求格式
+    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${encodeURIComponent(qq)}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP错误: ${response.status}`);
