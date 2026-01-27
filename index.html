@@ -127,43 +127,44 @@
         <section id="redpacket-page" class="page">
             <div class="container">
                 <h1><i class="fas fa-wallet"></i> 支付宝红包购卡 / 查询</h1>
-                <div class="card-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
-                    
-                    <div style="background: rgba(30, 41, 59, 0.7); padding: 25px; border-radius: 15px; border: 1px solid #334155;">
+                <div class="card-grid">
+                    <!-- 左侧表单 -->
+                    <div class="form-card">
                         <div style="margin-bottom: 15px;">
                             <label style="color: #60a5fa; font-size:14px;">1. 您的联系QQ (用于日后找回卡密)</label>
-                            <input type="text" id="packetQQ" placeholder="请输入QQ号" style="width: 100%; padding: 12px; border-radius: 10px; background: #0f172a; color: white; border: 1px solid #334155; margin-top:5px;">
+                            <input type="text" id="packetQQ" placeholder="请输入QQ号">
                         </div>
                         <div style="margin-bottom: 15px;">
                             <label style="color: #60a5fa; font-size:14px;">2. 选择购买套餐</label>
-                            <select id="packetType" style="width: 100%; padding: 12px; border-radius: 10px; background: #0f172a; color: white; border: 1px solid #334155; margin-top:5px;">
-                                <option value="19">A套餐 - 21元</option>
-                                <option value="36">B套餐 - 31元</option>
-                                <option value="56">C套餐 - 11元</option>
+                            <select id="packetType">
+                                <option value="21">A套餐 - 21元</option>
+                                <option value="31">B套餐 - 31元</option>
+                                <option value="11">C套餐 - 11元</option>
                             </select>
                         </div>
                         <div style="margin-bottom: 20px;">
                             <label style="color: #60a5fa; font-size:14px;">3. 支付宝红包口令</label>
-                            <input type="text" id="packetCode" placeholder="请输入你的红包口令" style="width: 100%; padding: 12px; border-radius: 10px; background: #0f172a; color: white; border: 1px solid #334155; margin-top:5px;">
+                            <input type="text" id="packetCode" placeholder="请输入你的红包口令">
                         </div>
-                        <button onclick="submitPacket()" style="width: 100%; background: #3b82f6; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold;">提交订单</button>
+                        <button onclick="submitPacket()">提交订单</button>
                         
-                        <div style="margin: 20px 0; border-top: 1px solid #334155;"></div>
+                        <div class="divider"></div>
                         
-                        <button onclick="queryByQQ()" style="width: 100%; background: #10b981; color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer;">查询我的卡密</button>
-                        <div id="packetStatus" style="margin-top: 15px; font-size: 14px; color: #94a3b8;"></div>
+                        <button onclick="queryByQQ()">查询我的卡密</button>
+                        <div id="packetStatus" class="status-message"></div>
                     </div>
 
-                    <div style="background: rgba(59, 130, 246, 0.1); padding: 25px; border-radius: 15px; border: 1px dashed #3b82f6;">
-                        <h3 style="color: #60a5fa;"><i class="fab fa-alipay"></i> 支付宝口令红包教学</h3>
-                        <ul style="margin-top:15px; color:#cbd5e1; line-height:2; font-size:14px;">
-                            <li>1. 打开支付宝 ➔ 点击【红包】</li>
+                    <!-- 右侧教学 -->
+                    <div class="instruction-card">
+                        <h3><i class="fab fa-alipay"></i> 支付宝口令红包教学</h3>
+                        <ul>
+                            <li>1. 打开支付宝 → 点击【红包】</li>
                             <li>2. 选择【发口令红包】</li>
-                            <li>2. 总金额填写对应账号的价格</li>
-                            <li>3. 数量填【1个】</li>
-                            <li>4. <span style="color:#fbbf24;">记住红包口令</span></li>
-                            <li>5. 生成口令后，粘贴到左侧提交</li>
-                            <li style="color:#f87171; font-weight:bold; margin-top:10px;">⚠️ 提交后30分钟内发送卡密。您可以离开页面，稍后回来输入QQ号即可查到卡密。</li>
+                            <li>3. 总金额填写对应账号的价格</li>
+                            <li>4. 数量填【1个】</li>
+                            <li>5. <span class="highlight">记住红包口令</span></li>
+                            <li>6. 生成口令后，粘贴到左侧提交</li>
+                            <li class="warning">⚠️ 提交后30分钟内发送卡密。您可以离开页面，稍后回来输入QQ号即可查到卡密。</li>
                         </ul>
                     </div>
                 </div>
@@ -487,6 +488,5 @@
     <script src="script.js"></script>
 </body>
 </html>
-
 
 
