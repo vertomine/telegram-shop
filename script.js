@@ -459,138 +459,115 @@ function showLiveCodeUI(container, data) {
     setInterval(pollCode, 3000);
 }
 
-// 红包购卡提交函数 - 已修复
+// 红包购卡提交函数
 function submitPacket() {
-    const qq = document.getElementById('packetQQ').value.trim();
-    const packetType = document.getElementById('packetType').value;
-    const packetCode = document.getElementById('packetCode').value.trim();
+    const qq = document.getElementById('packetQQ').value;
+    const type = document.getElementById('packetType').value;
+    const code = document.getElementById('packetCode').value;
+
+    if (!qq || !code) { 
+        alert('请完整填写QQ号和红包口令！'); 
+        return; 
+    }
+
     const statusDiv = document.getElementById('packetStatus');
-
-    if (!qq || !packetCode) {
-        statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 请输入完整信息（QQ和红包口令）";
-        return;
-    }
-
-    if (!/^\d{5,11}$/.test(qq)) {
-        statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 请输入有效的QQ号（5-11位数字）";
-        return;
-    }
-
     statusDiv.style.color = "#3b82f6";
-    statusDiv.innerText = "⏳ 正在提交订单...";
+    statusDiv.innerText = "正在提交订单...";
 
-    fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/submit_packet', {
+    fetch('http://139.177.187.30:5000/api/submit_packet', { 
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'ngrok-skip-browser-warning': '69420',
-            'Accept': 'application/json'
+        mode: 'cors',
+        headers: { 
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ 
-            qq: qq, 
-            amount: packetType,
-            code: packetCode
-        })
+        body: JSON.stringify({ qq: qq, amount: type, code: code })
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`HTTP错误: ${response.status}`);
+            throw new Error('网络请求失败');
         }
         return response.json();
     })
     .then(data => {
-        console.log('提交响应:', data);
         if (data.status === 'ok') {
             statusDiv.style.color = "#10b981";
-            statusDiv.innerText = "✅ 提交成功！订单已提交，请稍后查询卡密。";
-            // 清空红包口令
-            document.getElementById('packetCode').value = "";
+            statusDiv.innerText = "✅ 提交成功！管理员将在30分钟内审核，请稍后查询卡密。";
+            // 清空输入框
+            document.getElementById('packetQQ').value = '';
+            document.getElementById('packetCode').value = '';
         } else {
             statusDiv.style.color = "#ef4444";
-            statusDiv.innerText = "❌ 提交失败：" + (data.msg || "未知错误");
+            statusDiv.innerText = "❌ " + (data.msg || '提交失败');
         }
     })
-    .catch(error => {
-        console.error('提交错误:', error);
+    .catch(err => {
+        console.error('提交错误:', err);
         statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 网络错误，请检查网络连接或联系客服";
+        statusDiv.innerText = "❌ 连接服务器失败，请检查网络或联系管理员";
     });
 }
 
-// 查询红包订单函数 - 已修复
+// 查询红包卡密函数
 function queryByQQ() {
-    const qq = document.getElementById('packetQQ').value.trim();
+    const qq = document.getElementById('packetQQ').value;
+    if (!qq) { 
+        alert('请输入QQ号'); 
+        return; 
+    }
+
     const statusDiv = document.getElementById('packetStatus');
-
-    if (!qq) {
-        statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 请输入QQ号进行查询";
-        return;
-    }
-
-    if (!/^\d{5,11}$/.test(qq)) {
-        statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 请输入有效的QQ号（5-11位数字）";
-        return;
-    }
-
     statusDiv.style.color = "#3b82f6";
-    statusDiv.innerText = "⏳ 正在查询订单...";
+    statusDiv.innerText = "正在查询...";
 
-    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${encodeURIComponent(qq)}`, {
-        headers: {
-            'ngrok-skip-browser-warning': '69420',
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP错误: ${response.status}`);
-        }
-        return response.json();
-    })
+    fetch(`http://139.177.187.30:5000/api/query_packet?qq=${qq}`)
+    .then(response => response.json())
     .then(data => {
-        console.log('查询结果:', data);
-        
-        if (data.status === 'empty' || !data || data.length === 0) {
+        if (data.status === 'empty') {
             statusDiv.style.color = "#f59e0b";
-            statusDiv.innerText = "❌ 未找到相关订单记录，请确认QQ号是否正确";
+            statusDiv.innerText = "⚠️ 未找到该QQ号的订单记录";
         } else {
-            let html = '<div style="margin-top:15px; padding-top:15px; border-top:1px solid #334155;">';
-            html += '<h4 style="color:#60a5fa; margin-bottom:10px;">📋 您的订单记录：</h4>';
+            let resultHTML = "<h4 style='color:#60a5fa; margin-bottom:10px;'>查询结果：</h4>";
             
-            data.forEach(item => {
-                const statusStr = item.status === 1 ? 
-                    '<span style="color:#10b981; font-weight:bold">✅ 已发放</span>' : 
-                    '<span style="color:#f59e0b">⏳ 处理中</span>';
-                
-                const cardStr = item.card ? 
-                    `<div style="margin:5px 0; font-size:14px;"><strong>卡密:</strong> <code style="background:#1e293b; color:#60a5fa; padding:4px 8px; border-radius:4px; font-weight:bold;">${item.card}</code></div>` : 
-                    '<div style="color:#94a3b8; margin:5px 0;">卡密: 等待后台处理</div>';
-                
-                const timeStr = item.time || "未知时间";
-                
-                html += `
-                    <div style="background: rgba(30, 41, 59, 0.5); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                        <div style="font-size: 13px; color: #cbd5e1; margin-bottom: 5px;">
-                            <strong>提交时间:</strong> ${timeStr}
+            data.forEach((order, index) => {
+                resultHTML += `
+                    <div style="background:#1e293b; padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid #334155;">
+                        <div style="color:#cbd5e1; font-size:12px;">提交时间: ${order.time}</div>
+                        <div style="color:#${order.status === 1 ? '10b981' : 'f59e0b'}; margin:5px 0;">
+                            状态: ${order.status === 1 ? '✅ 已发放' : '⏳ 处理中'}
                         </div>
-                        <div style="font-size: 13px; color: #cbd5e1; margin-bottom: 5px;">
-                            <strong>订单状态:</strong> ${statusStr}
-                        </div>
-                        ${cardStr}
-                    </div>`;
+                        ${order.card ? `<div style="color:#60a5fa; font-weight:bold; margin-top:5px;">卡密: ${order.card}</div>` : ''}
+                    </div>
+                `;
             });
-            html += '</div>';
-            statusDiv.style.color = "#10b981";
-            statusDiv.innerHTML = html;
+            
+            statusDiv.innerHTML = resultHTML;
         }
     })
-    .catch(error => {
-        console.error('查询错误:', error);
+    .catch(err => {
+        console.error('查询错误:', err);
         statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 查询失败，请检查网络连接或联系客服";
+        statusDiv.innerText = "❌ 查询失败，请检查网络";
     });
+}
+
+// 每隔10秒检查新订单（后台功能）
+function checkNewRedPackets() {
+    fetch('http://139.177.187.30:5000/api/admin/pending_packets')
+    .then(res => res.json())
+    .then(data => {
+        if(data.length > 0) {
+            // 如果有新订单，播放提示音
+            try {
+                let msg = new SpeechSynthesisUtterance("您有新的红包订单，请及时处理");
+                window.speechSynthesis.speak(msg);
+            } catch(e) {
+                console.log('语音提醒失败:', e);
+            }
+        }
+    });
+}
+
+// 页面加载完成后开始检查新订单（仅管理员页面）
+if (window.location.pathname.includes('admin')) {
+    setInterval(checkNewRedPackets, 10000);
 }
