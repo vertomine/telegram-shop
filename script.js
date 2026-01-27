@@ -518,8 +518,18 @@ function queryByQQ() {
     statusDiv.style.color = "#3b82f6";
     statusDiv.innerText = "正在查询...";
 
-    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${qq}`)
-    .then(response => response.json())
+    // 修改点：在 fetch 中加入了 headers 参数
+    fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/query_packet?qq=${qq}`, {
+        headers: {
+            "ngrok-skip-browser-warning": "69420" // 核心：告诉 ngrok 跳过预览页，直接返回数据
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络响应错误');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.status === 'empty') {
             statusDiv.style.color = "#f59e0b";
@@ -527,10 +537,13 @@ function queryByQQ() {
         } else {
             let resultHTML = "<h4 style='color:#60a5fa; margin-bottom:10px;'>查询结果：</h4>";
             
-            data.forEach((order, index) => {
+            // 确保 data 是数组再进行遍历
+            const orders = Array.isArray(data) ? data : (data.orders || []);
+            
+            orders.forEach((order, index) => {
                 resultHTML += `
                     <div style="background:#1e293b; padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid #334155;">
-                        <div style="color:#cbd5e1; font-size:12px;">提交时间: ${order.time}</div>
+                        <div style="color:#cbd5e1; font-size:12px;">提交时间: ${order.time || '未知'}</div>
                         <div style="color:#${order.status === 1 ? '10b981' : 'f59e0b'}; margin:5px 0;">
                             状态: ${order.status === 1 ? '✅ 已发放' : '⏳ 处理中'}
                         </div>
@@ -545,6 +558,7 @@ function queryByQQ() {
     .catch(err => {
         console.error('查询错误:', err);
         statusDiv.style.color = "#ef4444";
-        statusDiv.innerText = "❌ 查询失败，请检查网络";
+        // 这里会打印具体的错误信息，方便你调试
+        statusDiv.innerText = "❌ 查询失败: " + err.message;
     });
 }
