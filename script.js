@@ -1,4 +1,4 @@
-const API_BASE = 'https://sapremic-unnumerously-joaquin.ngrok-free.dev';
+const API_BASE = 'http://139.177.187.30:5000';
 
 // 等待页面加载完成
 document.addEventListener('DOMContentLoaded', function() {
@@ -334,7 +334,7 @@ function redeemCard() {
     msgLabel.style.color = "#3b82f6";
     msgLabel.innerText = "正在验证卡密，请稍后...";
 
-    fetch('https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/verify', {
+    fetch('https://http://139.177.187.30:5000/api/verify', {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
@@ -445,7 +445,7 @@ function showLiveCodeUI(container, data) {
     // 开启轮询
     const pollCode = () => {
         const cleanId = data.phone.replace(/\D/g, ''); 
-        fetch(`https://sapremic-unnumerously-joaquin.ngrok-free.dev/api/get_code?id=${encodeURIComponent(cleanId)}`)
+        fetch(`https://http://139.177.187.30:5000/api/get_code?id=${encodeURIComponent(cleanId)}`)
         .then(r => r.json())
         .then(res => {
             const codeEl = document.getElementById('live-tg-code');
